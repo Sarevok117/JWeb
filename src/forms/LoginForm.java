@@ -7,11 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import beans.UserBean;
 
-public class SignUpForm {
-    public static final String EMAIL_FIELD = "email";
+public class LoginForm {
+	public static final String EMAIL_FIELD = "email";
     public static final String PWD_FIELD = "password";
-    public static final String CONF_FIELD = "confirmation";
-    public static final String NAME_FIELD = "name";
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
 
@@ -23,12 +21,10 @@ public class SignUpForm {
     	return errors;
     }
     
-    public UserBean signUpUser( HttpServletRequest request)
+    public UserBean logInUser( HttpServletRequest request)
     {
     	String email = request.getParameter(EMAIL_FIELD);
         String password = request.getParameter(PWD_FIELD);
-        String confirmation = request.getParameter(CONF_FIELD);
-        String name = request.getParameter(NAME_FIELD);
         UserBean user = new UserBean();
         
         try {
@@ -39,28 +35,22 @@ public class SignUpForm {
         user.setEmail(email);
         
         try {
-        	validatePassword(password, confirmation);
+        	validatePassword(password);
         } catch (Exception e) {
             errors.put( PWD_FIELD, e.getMessage() );
     	}
         user.setPassword(password);
         
-        try {
-        	validateName(name);
-        } catch (Exception e) {
-            errors.put( NAME_FIELD, e.getMessage() );	
-        }
-        user.setName(name);
-        
         if (errors.isEmpty()) {
-        	result = "User signed up.";
+        	result = "User logged in.";
         } else {
-        	result = "User not signed up";
+        	result = "User not logged in";
         }
         
         return user;
     }
     
+    // TODO: VALIDATION FUNCS
     /**
      * Validates email address
      */
@@ -72,11 +62,9 @@ public class SignUpForm {
     /**
      * Validates password
      */
-    private void validatePassword( String password, String confirmation ) throws Exception{
-        if (password != null && password.trim().length() != 0 && confirmation != null && confirmation.trim().length() != 0) {
-            if (!password.equals(confirmation)) {
-                throw new Exception("Password and confirmation don't match.");
-            } else if (password.trim().length() < 3) {
+    private void validatePassword( String password) throws Exception{
+        if (password != null && password.trim().length() != 0) {
+            if (password.trim().length() < 3) {
                 throw new Exception("Passwords must contain at least 3 characters");
             }
         } else {
@@ -84,12 +72,4 @@ public class SignUpForm {
         }
     }
 
-    /**
-     * Validates name
-     */
-    private void validateName( String name ) throws Exception {
-        if ( name != null && name.trim().length() < 3 ) {
-            throw new Exception( "User name must contain at least 3 characters." );
-        }
-    }
 }
