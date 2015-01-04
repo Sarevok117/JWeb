@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Main</title>
 </head>
 <body>
-        <p>Ceci est une page générée depuis une JSP.</p>
+        <p>Here's the main page</p>
 </body>
 </html>
