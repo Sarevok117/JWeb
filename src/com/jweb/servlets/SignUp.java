@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jweb.beans.UserBean;
+import com.jweb.dao.DaoException;
 import com.jweb.dao.UserDao;
 import com.jweb.dao.DaoFactory;
 import com.jweb.forms.SignUpForm;
@@ -30,15 +31,17 @@ public class SignUp extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
     	SignUpForm form = new SignUpForm();
     	UserBean user = form.signUpUser(request);
-    	if (form.getErrors().isEmpty()) {
-    		try {
+    	
+    	
+    	try {
+    		if (form.getErrors().isEmpty()) {
     			userDao.create(user);
     		}
-    		catch (DaoException e) {
-    			
-    		}
     	}
-    	
+    	catch (DaoException e) {
+    		
+    	}
+   	
         request.setAttribute(USER, user);
         request.setAttribute(FORM, form);
         
