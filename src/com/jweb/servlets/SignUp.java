@@ -36,7 +36,7 @@ public class SignUp extends HttpServlet {
     			userDao.create(user);
     		}
     		catch (DaoException e) {
-    			
+    			form.setResult(e.getMessage());
     		}
     	}
     	

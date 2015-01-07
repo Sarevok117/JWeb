@@ -15,6 +15,9 @@ public class SignUpForm {
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
     
+    public void setResult(String result) {
+    	this.result = result;
+    }
     public String getResult() {
     	return result;
     }
