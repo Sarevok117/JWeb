@@ -31,7 +31,12 @@ public class SignUp extends HttpServlet {
     	SignUpForm form = new SignUpForm();
     	UserBean user = form.signUpUser(request);
     	if (form.getErrors().isEmpty()) {
-    		userDao.create(user);
+    		try {
+    			userDao.create(user);
+    		}
+    		catch (DaoException e) {
+    			
+    		}
     	}
     	
         request.setAttribute(USER, user);
