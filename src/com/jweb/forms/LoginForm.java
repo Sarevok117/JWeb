@@ -1,11 +1,11 @@
-package forms;
+package com.jweb.forms;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import beans.UserBean;
+import com.jweb.beans.UserBean;
 
 public class LoginForm {
 	public static final String EMAIL_FIELD = "email";

@@ -1,4 +1,4 @@
-package servlets;
+package com.jweb.servlets;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.UserBean;
-import forms.LoginForm;
+import com.jweb.beans.UserBean;
+import com.jweb.forms.LoginForm;
 
 public class Login extends HttpServlet {
     public static final String USER = "user";

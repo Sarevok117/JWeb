@@ -1,4 +1,4 @@
-package beans;
+package com.jweb.beans;
 
 public class UserBean {
 	private String email;

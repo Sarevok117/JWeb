@@ -1,11 +1,11 @@
-package forms;
+package com.jweb.forms;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import beans.UserBean;
+import com.jweb.beans.UserBean;
 
 public class SignUpForm {
     public static final String EMAIL_FIELD = "email";
@@ -14,7 +14,7 @@ public class SignUpForm {
     public static final String NAME_FIELD = "name";
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
-
+    
     public String getResult() {
     	return result;
     }

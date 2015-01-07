@@ -11,15 +11,15 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>MainServlet</servlet-name>
-		<servlet-class>servlets.MainServlet</servlet-class>
+		<servlet-class>com.jweb.servlets.MainServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>SignUp</servlet-name>
-		<servlet-class>servlets.SignUp</servlet-class>
+		<servlet-class>com.jweb.servlets.SignUp</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Login</servlet-name>
-		<servlet-class>servlets.Login</servlet-class>
+		<servlet-class>com.jweb.servlets.Login</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MainServlet</servlet-name>
@@ -33,4 +33,7 @@
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+	<listener>
+	    <listener-class>com.jweb.config.DaoFactoryInitializer</listener-class>
+	</listener>
 </web-app>
