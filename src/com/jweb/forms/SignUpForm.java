@@ -31,6 +31,7 @@ public class SignUpForm {
         String name = request.getParameter(NAME_FIELD);
         UserBean user = new UserBean();
         
+        user.setAdmin(false);
         try {
         	validateEmail(email);
         } catch (Exception e) {

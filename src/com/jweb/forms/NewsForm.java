@@ -28,9 +28,12 @@ public class NewsForm {
         NewsBean newsBean = new NewsBean();
         HttpSession session = request.getSession();
         UserBean user = (UserBean)session.getAttribute("session");
-        if (session.getAttribute("session") == null) {
-        	result = "You need to be logged to post newss.";
+        if (user == null) {
+        	result = "You need to be logged to post news.";
         	return newsBean;
+        } else if (user.getAdmin() == false){
+        	result = "You need to be admin to post news.";
+        	return newsBean;        	
         }
         try {
         	validateCom(news);

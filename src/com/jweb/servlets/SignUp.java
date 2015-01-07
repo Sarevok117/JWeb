@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jweb.beans.UserBean;
+import com.jweb.dao.DaoException;
 import com.jweb.dao.UserDao;
 import com.jweb.dao.DaoFactory;
 import com.jweb.forms.SignUpForm;
