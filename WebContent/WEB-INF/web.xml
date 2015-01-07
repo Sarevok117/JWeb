@@ -21,6 +21,14 @@
 		<servlet-name>Login</servlet-name>
 		<servlet-class>com.jweb.servlets.Login</servlet-class>
 	</servlet>
+	<servlet>
+    	<servlet-name>Comment</servlet-name>
+    	<servlet-class>servlets.Comment</servlet-class>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>News</servlet-name>
+    	<servlet-class>servlets.News</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>MainServlet</servlet-name>
 		<url-pattern>/main</url-pattern>
@@ -33,7 +41,15 @@
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-	<listener>
+  	<servlet-mapping>
+    	<servlet-name>Comment</servlet-name>
+    	<url-pattern>/comment</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+    	<servlet-name>News</servlet-name>
+    	<url-pattern>/news</url-pattern>
+  	</servlet-mapping>
+  	<listener>
 	    <listener-class>com.jweb.config.DaoFactoryInitializer</listener-class>
 	</listener>
 </web-app>
