@@ -20,9 +20,7 @@ public class SignUp extends HttpServlet {
     private UserDao userDao;
     
     public void init() throws ServletException {
-    	ServletContext context = getServletContext();
-    	DaoFactory factory = ((DaoFactory)context.getAttribute("daofactory"));
-  		userDao = factory.getUserDao();
+  		userDao = ((DaoFactory)getServletContext().getAttribute("daofactory")).getUserDao();
     }
     
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{

@@ -6,13 +6,19 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.jweb.beans.UserBean;
+import com.jweb.dao.UserDao;
 
 public class LoginForm {
 	public static final String EMAIL_FIELD = "email";
     public static final String PWD_FIELD = "password";
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
-
+    private UserDao userDao;
+    
+    public LoginForm(UserDao user) {
+    	this.userDao = user;
+    }
+    
     public String getResult() {
     	return result;
     }
@@ -25,21 +31,28 @@ public class LoginForm {
     {
     	String email = request.getParameter(EMAIL_FIELD);
         String password = request.getParameter(PWD_FIELD);
-        UserBean user = new UserBean();
+        UserBean user;
         
         try {
         	validateEmail(email);
         } catch (Exception e) {
             errors.put( EMAIL_FIELD, e.getMessage() );
         }
-        user.setEmail(email);
+        user = userDao.find(email);
+        if (user == null) {
+        	errors.put( EMAIL_FIELD, "User not found");
+        	return user;
+        }
         
         try {
         	validatePassword(password);
         } catch (Exception e) {
             errors.put( PWD_FIELD, e.getMessage() );
     	}
-        user.setPassword(password);
+        System.out.println("User pwd: " + user.getPassword() + " - Field pwd: " + password);
+        if (!user.getPassword().equals(password)) {
+        	errors.put(PWD_FIELD, "Wrong password");
+        }
         
         if (errors.isEmpty()) {
         	result = "User logged in.";
