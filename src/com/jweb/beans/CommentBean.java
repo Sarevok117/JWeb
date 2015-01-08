@@ -2,8 +2,8 @@ package com.jweb.beans;
 
 public class CommentBean {
 	private String email;
-	private String name;
-	private String comment;
+	private String user;
+	private String content;
 	private String date;
 
 	public void setEmail(String email) {
@@ -13,22 +13,22 @@ public class CommentBean {
 		return email;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUser(String user) {
+		this.user = user;
 	}
-	public String getName() {
-		return name;
+	public String getUser() {
+		return user;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getComment() {
-		return comment;
+	public String getContent() {
+		return content;
 	}
 
 	public void setDate(String date) {
-		this.name = date;
+		this.date = date;
 	}
 	public String getDate() {
 		return date;
