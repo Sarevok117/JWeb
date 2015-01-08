@@ -36,6 +36,7 @@ public class CommentForm {
         HttpSession session = request.getSession();
         UserBean user = (UserBean)session.getAttribute("session");
         if (session.getAttribute("session") == null) {
+            errors.put( "result", "You need to be logged to post comments." );
         	result = "You need to be logged to post comments.";
         	return commentBean;
         }

@@ -47,7 +47,8 @@ public class CommentDaoImpl implements CommentDao{
 
 		try {
 			connection = daoFactory.getConnection();
-			statement = DaoUtils.initStatement(connection, SQL_INSERT, true, comment.getComment(), comment.getDate(), comment.getName(), comment.getEmail());
+	        java.util.Date utilDate = new java.util.Date();
+			statement = DaoUtils.initStatement(connection, SQL_INSERT, true, comment.getComment(), new java.sql.Date(utilDate.getTime()), comment.getName(), comment.getEmail());
 			int status = statement.executeUpdate();
 			if (status == 0) {
 				throw new DaoException("Failed to add a new comment, no line added in table");
