@@ -1,5 +1,8 @@
 package com.jweb.dao;
 
-public class CommentDao {
+import com.jweb.beans.CommentBean;
 
+public interface CommentDao {
+	void create(CommentBean comment) throws DaoException;
+	CommentBean find(String email) throws DaoException;
 }

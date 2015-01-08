@@ -23,11 +23,11 @@
 	</servlet>
 	<servlet>
     	<servlet-name>Comment</servlet-name>
-    	<servlet-class>servlets.Comment</servlet-class>
+    	<servlet-class>com.jweb.servlets.Comment</servlet-class>
   	</servlet>
   	<servlet>
     	<servlet-name>News</servlet-name>
-    	<servlet-class>servlets.News</servlet-class>
+    	<servlet-class>com.jweb.servlets.News</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MainServlet</servlet-name>
