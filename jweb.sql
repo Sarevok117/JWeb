@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 08 Janvier 2015 à 11:41
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Généré le :  Jeu 08 Janvier 2015 à 13:47
+-- Version du serveur :  5.6.21
+-- Version de PHP :  5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,13 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `content` text NOT NULL,
   `date` date NOT NULL,
   `user` text NOT NULL,
-  `email` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `email` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -42,12 +41,11 @@ CREATE TABLE IF NOT EXISTS `comment` (
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `content` text NOT NULL,
   `date` date NOT NULL,
-  `user` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `userEmail` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -56,12 +54,11 @@ CREATE TABLE IF NOT EXISTS `news` (
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` text NOT NULL,
   `description` text NOT NULL,
-  `price` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -70,14 +67,12 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` char(56) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+  `admin` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `user`
@@ -90,8 +85,60 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `admin`) VALUES
 (4, 'lol', 'lol@mail.com', 'lol', 0),
 (5, 'lolilol', 'moi@mail.com', 'lol', 0),
 (6, 'jean', 'jean@mail.com', 'lol', 0),
-(11, 'lol', 'lol@lol.lol', 'lol', 0);
+(18, 'bob', 'bob@mail.com', 'lol', 0);
 
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `comment`
+--
+ALTER TABLE `comment`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `news`
+--
+ALTER TABLE `news`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `products`
+--
+ALTER TABLE `products`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `comment`
+--
+ALTER TABLE `comment`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `news`
+--
+ALTER TABLE `news`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `products`
+--
+ALTER TABLE `products`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
