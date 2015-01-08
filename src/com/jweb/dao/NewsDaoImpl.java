@@ -99,7 +99,7 @@ public class NewsDaoImpl implements NewsDao {
 	private static NewsBean map(ResultSet resultSet) throws SQLException {
 		NewsBean news = new NewsBean();
 		news.setId(resultSet.getLong("id"));
-		news.setUserEmail(resultSet.getString("user"));
+		news.setUserEmail(resultSet.getString("userEmail"));
 		news.setContent(resultSet.getString("content"));
 		news.setDate(resultSet.getString("date"));
 		return news;
