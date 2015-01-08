@@ -1,6 +1,7 @@
 package com.jweb.servlets;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ public class Comment extends HttpServlet {
 	public static final String COMMENT = "comment";
     public static final String FORM = "form";
     public static final String SESSION = "session";
+    public static final String LIST = "list";
     
     private CommentDao commentDao;
 
@@ -26,7 +28,11 @@ public class Comment extends HttpServlet {
     }
     
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		this.getServletContext().getRequestDispatcher("/WEB-INF/comment.jsp").forward(request, response);		
+		Collection<CommentBean> comments;
+    	
+		comments = commentDao.findAll();
+		request.setAttribute(LIST, comments);
+    	this.getServletContext().getRequestDispatcher("/WEB-INF/comment.jsp").forward(request, response);		
 	}
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

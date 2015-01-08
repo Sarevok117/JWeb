@@ -1,10 +1,13 @@
 package com.jweb.dao;
 
 import com.jweb.beans.CommentBean;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class CommentDaoImpl implements CommentDao{
 	private DaoFactory daoFactory;
@@ -14,7 +17,7 @@ public class CommentDaoImpl implements CommentDao{
 	}
 
 	@Override
-	public CommentBean find(String email) throws DaoException {
+	public CommentBean find(int id) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -22,7 +25,7 @@ public class CommentDaoImpl implements CommentDao{
 
 		try {
 			connection = daoFactory.getConnection();
-			statement = DaoUtils.initStatement(connection, "SELECT * FROM comment WHERE email = ?", false, email);
+			statement = DaoUtils.initStatement(connection, "SELECT * FROM comment WHERE email = ?", false, id);
 			resultSet = statement.executeQuery();
 			if (resultSet.next()) {
 				comment = map(resultSet);
@@ -73,11 +76,34 @@ public class CommentDaoImpl implements CommentDao{
 
 	private static CommentBean map(ResultSet resultSet) throws SQLException {
 		CommentBean comment = new CommentBean();
-//		comment.setId(resultSet.getLong("id"));
 		comment.setEmail(resultSet.getString("email"));
 		comment.setName(resultSet.getString("user"));
 		comment.setComment(resultSet.getString("content"));
 		comment.setDate(resultSet.getString("date"));
 		return comment;
+	}
+
+	@Override
+	public Collection<CommentBean> findAll() throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		Collection<CommentBean> comments = new ArrayList<CommentBean>();
+
+		try {
+			connection = daoFactory.getConnection();
+			statement = DaoUtils.initStatement(connection, "SELECT * FROM comment", false);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				comments.add(map(resultSet));
+			}
+		}
+		catch (SQLException e) {
+			throw new DaoException(e);
+		}
+		finally {
+			DaoUtils.closeParams(statement, connection, resultSet);
+		}
+		return comments;
 	}
 }

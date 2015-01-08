@@ -17,10 +17,6 @@ public class DaoFactoryInitializer implements ServletContextListener {
 		catch (Exception e){
 			System.out.println(e.getMessage());
 		}
-		System.out.println("ICI CONNARD");
-		if (this.daoFactory != null) {
-			System.out.println("NUL");
-		}
 		servletContext.setAttribute("daofactory", this.daoFactory);
 	}
 
