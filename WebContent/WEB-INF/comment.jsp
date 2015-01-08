@@ -8,7 +8,8 @@
 <title>Comment</title>
 </head>
 <body>
-<form method="post" action="comment" id="form">
+	<a href="/Jwebb">Home Page</a><br />
+	<form method="post" action="comment" id="form">
             <fieldset>
                 <legend>Comment</legend>
 

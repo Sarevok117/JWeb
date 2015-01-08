@@ -8,6 +8,7 @@
 <title>Login</title>
 </head>
 <body>
+	<a href="/JWebb/">Home Page</a><br />
 	<form method="post" action="login">
             <fieldset>
                 <legend>Login</legend>

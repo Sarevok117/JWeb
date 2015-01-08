@@ -8,7 +8,8 @@
 <title>News</title>
 </head>
 <body>
-<form method="post" action="news" id="form">
+	<a href="/Jwebb">Home Page</a><br />
+	<form method="post" action="news" id="form">
             <fieldset>
                 <legend>News</legend>
 

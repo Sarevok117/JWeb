@@ -12,7 +12,7 @@ import com.jweb.beans.NewsBean;
 
 public class NewsDaoImpl implements NewsDao {
 	private DaoFactory daoFactory;
-	private static final String SQL_INSERT = "INSERT INTO news (content, date, user) VALUES (?, ?, ?)";
+	private static final String SQL_INSERT = "INSERT INTO news (content, date, userEmail) VALUES (?, ?, ?)";
 	
 	NewsDaoImpl(DaoFactory factory) {
 		this.daoFactory = factory;
