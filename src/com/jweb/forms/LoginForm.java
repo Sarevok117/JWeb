@@ -53,7 +53,6 @@ public class LoginForm {
         } catch (Exception e) {
             errors.put( PWD_FIELD, e.getMessage() );
     	}
-        System.out.println("User pwd: " + user.getPassword() + " - Field pwd: " + password);
         if (!user.getPassword().equals(password)) {
         	errors.put(PWD_FIELD, "Wrong password");
         }
