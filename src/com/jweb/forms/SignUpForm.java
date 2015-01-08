@@ -12,6 +12,7 @@ public class SignUpForm {
     public static final String PWD_FIELD = "password";
     public static final String CONF_FIELD = "confirmation";
     public static final String NAME_FIELD = "name";
+    public static final String NEWS_FIELD = "news";
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
     
@@ -32,9 +33,18 @@ public class SignUpForm {
         String password = request.getParameter(PWD_FIELD);
         String confirmation = request.getParameter(CONF_FIELD);
         String name = request.getParameter(NAME_FIELD);
+        String news = request.getParameter(NEWS_FIELD);
+        
         UserBean user = new UserBean();
         
         user.setAdmin(false);
+        
+        if (news == null) {
+        	user.setNews(false);
+        } else {
+        	user.setNews(true);
+        }
+        
         try {
         	validateEmail(email);
         } catch (Exception e) {

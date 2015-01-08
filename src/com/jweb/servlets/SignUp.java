@@ -34,7 +34,10 @@ public class SignUp extends HttpServlet {
     	try {
     		if (form.getErrors().isEmpty()) {
     			userDao.create(user);
-    			this.getServletContext().getRequestDispatcher( "/WEB-INF/main.jsp" ).forward( request, response );
+    	        request.setAttribute(USER, user);
+    	        request.setAttribute(FORM, form);
+    	        this.getServletContext().getRequestDispatcher( "/WEB-INF/main.jsp" ).forward( request, response );
+    	        return ;
     		}
     	}
     	catch (DaoException e) {

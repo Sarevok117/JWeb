@@ -5,7 +5,8 @@ public class UserBean {
 	private String password;
 	private String name;
 	private Boolean admin;
-	
+	private Boolean news;
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -32,5 +33,12 @@ public class UserBean {
 	}
 	public Boolean getAdmin() {
 		return admin;
+	}
+
+	public void setNews(Boolean news) {
+		this.news = news;
+	}
+	public Boolean getNews() {
+		return news;
 	}
 }
