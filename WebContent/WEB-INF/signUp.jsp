@@ -31,6 +31,10 @@
                 <span class="error">${form.errors['name']}</span>
                 <br />
 
+				<input type="checkbox" name="newsletter" value="news" /> 
+				<label for="newsletter">Subscribe to our newsletter</label>
+				<br />
+								
                 <input type="submit" value="SignUp" class="labelLess" />
                 <p>${form.result}</p>
                 <br />
