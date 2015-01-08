@@ -1,5 +1,8 @@
 package com.jweb.forms;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +21,10 @@ public class CommentForm {
     	return result;
     }
     
+    public void setResult(String result) {
+    	this.result = result;
+    }
+    
     public Map<String, String> getErrors() {
     	return errors;
     }
@@ -29,17 +36,24 @@ public class CommentForm {
         HttpSession session = request.getSession();
         UserBean user = (UserBean)session.getAttribute("session");
         if (session.getAttribute("session") == null) {
+            errors.put( "result", "You need to be logged to post comments." );
         	result = "You need to be logged to post comments.";
         	return commentBean;
         }
+        
         try {
         	validateCom(comment);
         } catch (Exception e) {
             errors.put( COMMENT_FIELD, e.getMessage() );
         }
         commentBean.setComment(comment);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        commentBean.setDate(dateFormat.format(date));
+        commentBean.setEmail(user.getEmail());
+        commentBean.setName(user.getName());
         
-        if (session.getAttribute("session") != null && errors.isEmpty()) {
+        if (errors.isEmpty()) {
         	result = "Comment posted.";
         } else {
            	result = "Comment not posted.";            
@@ -48,7 +62,6 @@ public class CommentForm {
         return commentBean;
     }
     
-    // TODO: VALIDATION FUNCS
     /**
      * Validates comment
      */

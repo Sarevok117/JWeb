@@ -15,6 +15,10 @@ public class LoginForm {
     private Map<String, String> errors = new HashMap<String, String>();
     private UserDao userDao;
     
+    public void setResult(String result) {
+    	this.result = result;
+    }
+    
     public LoginForm(UserDao user) {
     	this.userDao = user;
     }
