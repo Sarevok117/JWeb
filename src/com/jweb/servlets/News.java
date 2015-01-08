@@ -45,7 +45,7 @@ public class News extends HttpServlet {
     			newsDao.create(news);
     		}
     		catch (DaoException e) {
-//    			form.setResult(e.getMessage());
+    			form.setResult(e.getMessage());
     		}
     	}
     	allNews = newsDao.findAll();

@@ -14,5 +14,9 @@
 	s'exprime pleinement par ses arômes floraux, ses notes épicées, sa richesse,
 	sa fraîcheur et sa complexité, donnent un vin d'exception qui accompagnera à merveille les apéritifs,
 	les foies gras, gâteaux secs, les fromages à caractère et les desserts</p>	
+	<a href="/JWebb/comment">Comments</a><br />
+	<a href="/JWebb/news">News</a><br />
+	<a href="/JWebb/login">Login</a><br />
+	<a href="/JWebb/signup">Sign up</a><br />
 </body>
 </html>

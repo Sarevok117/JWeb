@@ -66,7 +66,6 @@ public class LoginForm {
         return user;
     }
     
-    // TODO: VALIDATION FUNCS
     /**
      * Validates email address
      */

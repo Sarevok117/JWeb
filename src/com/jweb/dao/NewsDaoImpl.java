@@ -12,7 +12,7 @@ import com.jweb.beans.NewsBean;
 
 public class NewsDaoImpl implements NewsDao {
 	private DaoFactory daoFactory;
-	private static final String SQL_INSERT = "INSERT INTO news (content, date, userEmail) VALUES (?, ?, ?)";
+	private static final String SQL_INSERT = "INSERT INTO news (content, date, user) VALUES (?, ?, ?)";
 	
 	NewsDaoImpl(DaoFactory factory) {
 		this.daoFactory = factory;
@@ -39,6 +39,7 @@ public class NewsDaoImpl implements NewsDao {
 
 		}
 		catch (SQLException e) {
+			System.out.println(e.getMessage());
 			throw new DaoException("Failed to add a new news");
 		}
 		finally {
@@ -98,7 +99,7 @@ public class NewsDaoImpl implements NewsDao {
 	private static NewsBean map(ResultSet resultSet) throws SQLException {
 		NewsBean news = new NewsBean();
 		news.setId(resultSet.getLong("id"));
-		news.setUserEmail(resultSet.getString("userEmail"));
+		news.setUserEmail(resultSet.getString("user"));
 		news.setContent(resultSet.getString("content"));
 		news.setDate(resultSet.getString("date"));
 		return news;
