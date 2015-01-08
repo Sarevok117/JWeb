@@ -2,10 +2,25 @@ package com.jweb.beans;
 
 public class NewsBean {
 	private Long id;
-	private String email;
-	private String name;
-	private String news;
+	private String content;
+	private String userEmail;
 	private String date;
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String mail) {
+		this.userEmail = mail;
+	}
 
 	public Long getId() {
 		return id;
@@ -15,29 +30,8 @@ public class NewsBean {
 		this.id = id;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getEmail() {
-		return email;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getName() {
-		return name;
-	}
-
-	public void setNews(String news) {
-		this.news = news;
-	}
-	public String getNews() {
-		return news;
-	}
-
 	public void setDate(String date) {
-		this.name = date;
+		this.date = date;
 	}
 	public String getDate() {
 		return date;
