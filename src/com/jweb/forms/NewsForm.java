@@ -56,7 +56,6 @@ public class NewsForm {
         return newsBean;
     }
     
-    // TODO: VALIDATION FUNCS
     /**
      * Validates news
      */
