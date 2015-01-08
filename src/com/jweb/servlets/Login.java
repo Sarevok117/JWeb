@@ -48,6 +48,7 @@ public class Login extends HttpServlet {
     		}
     	}
     	catch (DaoException e) {
+    		request.setAttribute(FORM, form);
     		this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     		System.out.println(e.getMessage());
     	}

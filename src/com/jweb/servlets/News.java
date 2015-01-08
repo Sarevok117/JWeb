@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jweb.beans.CommentBean;
 import com.jweb.beans.NewsBean;
-import com.jweb.dao.CommentDao;
 import com.jweb.dao.DaoException;
 import com.jweb.dao.DaoFactory;
 import com.jweb.dao.NewsDao;

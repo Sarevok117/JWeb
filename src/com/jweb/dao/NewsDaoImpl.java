@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.jweb.beans.CommentBean;
 import com.jweb.beans.NewsBean;
 
 public class NewsDaoImpl implements NewsDao {
