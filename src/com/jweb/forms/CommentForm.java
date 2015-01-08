@@ -46,12 +46,12 @@ public class CommentForm {
         } catch (Exception e) {
             errors.put( COMMENT_FIELD, e.getMessage() );
         }
-        commentBean.setComment(comment);
+        commentBean.setContent(comment);
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         commentBean.setDate(dateFormat.format(date));
         commentBean.setEmail(user.getEmail());
-        commentBean.setName(user.getName());
+        commentBean.setUser(user.getName());
         
         if (errors.isEmpty()) {
         	result = "Comment posted.";
