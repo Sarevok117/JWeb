@@ -1,11 +1,20 @@
 package com.jweb.beans;
 
 public class NewsBean {
+	private Long id;
 	private String email;
 	private String name;
 	private String news;
 	private String date;
 
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
