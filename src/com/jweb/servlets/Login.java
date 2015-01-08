@@ -37,10 +37,10 @@ public class Login extends HttpServlet {
         
         if (form.getErrors().isEmpty()) {
             session.setAttribute(SESSION, user);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/main.jsp").forward(request, response);
         } else {
             session.setAttribute(SESSION, null);
-        }
-        
-        this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        }  
     }
 }

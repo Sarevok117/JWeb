@@ -15,6 +15,9 @@ public class SignUpForm {
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
     
+    public void setResult(String result) {
+    	this.result = result;
+    }
     public String getResult() {
     	return result;
     }
@@ -31,6 +34,7 @@ public class SignUpForm {
         String name = request.getParameter(NAME_FIELD);
         UserBean user = new UserBean();
         
+        user.setAdmin(false);
         try {
         	validateEmail(email);
         } catch (Exception e) {

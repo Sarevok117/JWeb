@@ -7,6 +7,12 @@
 <title>Main</title>
 </head>
 <body>
-        <p>Here's the main page</p>
+	<h1>Gewurztraminer</h1>
+	<h2>Cuvée catherine 2011</h2>
+	<p>Ce Gewurztraminer issu de raisins sur-mûris des coteaux du Bollenberg,
+	colline sous vosgienne au climat méditérranéen et au sol argilo-calcaire,
+	s'exprime pleinement par ses arômes floraux, ses notes épicées, sa richesse,
+	sa fraîcheur et sa complexité, donnent un vin d'exception qui accompagnera à merveille les apéritifs,
+	les foies gras, gâteaux secs, les fromages à caractère et les desserts</p>	
 </body>
 </html>

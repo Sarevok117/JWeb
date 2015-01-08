@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 
-	private static final String SQL_INSERT = "INSERT INTO user (email, password, name) VALUES (?, ?, ?)";
+	private static final String SQL_INSERT = "INSERT INTO user (email, password, name, admin) VALUES (?, ?, ?, ?)";
 
 	@Override
 	public void create(UserBean user) throws IllegalArgumentException, DaoException {
@@ -47,22 +47,19 @@ public class UserDaoImpl implements UserDao{
 
 		try {
 			connection = daoFactory.getConnection();
-			statement = DaoUtils.initStatement(connection, SQL_INSERT, true, user.getEmail(), user.getPassword(), user.getName());
+			statement = DaoUtils.initStatement(connection, SQL_INSERT, true, user.getEmail(), user.getPassword(), user.getName(), user.getAdmin());
 			int status = statement.executeUpdate();
 			if (status == 0) {
 				throw new DaoException("Failed to add a new user, no line added in table");
 			}
 			resultSet = statement.getGeneratedKeys();
-			if (resultSet.next()) {
-//				user.setId(resultSet.getLong(1));
-			}
-			else {
+			if (!resultSet.next()) {
 				throw new DaoException("Failed to add a new user, no ID generated");
 			}
 
 		}
 		catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Failed to add a new user");
 		}
 		finally {
 			DaoUtils.closeParams(statement, connection, resultSet);
