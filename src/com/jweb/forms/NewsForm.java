@@ -14,6 +14,10 @@ public class NewsForm {
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
 
+    public void setResult(String result) {
+    	this.result = result;
+    }
+    
     public String getResult() {
     	return result;
     }
@@ -29,10 +33,10 @@ public class NewsForm {
         HttpSession session = request.getSession();
         UserBean user = (UserBean)session.getAttribute("session");
         if (user == null) {
-        	result = "You need to be logged to post news.";
+        	errors.put( COMMENT_FIELD, "You need to be logged to post news.");
         	return newsBean;
         } else if (user.getAdmin() == false){
-        	result = "You need to be admin to post news.";
+        	errors.put( COMMENT_FIELD, "You need to be admin to post news.");
         	return newsBean;        	
         }
         try {
