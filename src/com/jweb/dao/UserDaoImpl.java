@@ -69,11 +69,10 @@ public class UserDaoImpl implements UserDao{
 
 	private static UserBean map(ResultSet resultSet) throws SQLException {
 		UserBean user = new UserBean();
-//		user.setId(resultSet.getLong("id"));
 		user.setEmail(resultSet.getString("email"));
 		user.setName(resultSet.getString("name"));
-//		user.setSurname(resultSet.getString("surname"));
 		user.setPassword(resultSet.getString("password"));
+		user.setAdmin(resultSet.getBoolean("admin"));
 		return user;
 	}
 }

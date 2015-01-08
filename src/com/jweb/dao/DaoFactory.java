@@ -71,4 +71,8 @@ public class DaoFactory {
 	public CommentDao getCommentDao() {
 	    return new CommentDaoImpl(this);
 	}
+	
+	public NewsDao getNewsDao() {
+		return new NewsDaoImpl(this);
+	}
 }

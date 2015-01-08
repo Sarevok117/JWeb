@@ -28,7 +28,7 @@
 	</form>
 	<c:forEach items="${list}" var="item">
 		<br/>
-		<h2><c:out value="${item.user}" /></h2>
+		<h2><c:out value="${item.userEmail}" /></h2>
 		<p><c:out value="${item.date}" /></p>
 		<p><c:out value="${item.content}" /></p>
 		<br/>

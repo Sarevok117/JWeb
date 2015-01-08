@@ -40,7 +40,8 @@ public class NewsForm {
         } catch (Exception e) {
             errors.put( COMMENT_FIELD, e.getMessage() );
         }
-        newsBean.setNews(news);
+        newsBean.setContent(news);
+        newsBean.setUserEmail(user.getEmail());
         
         if (session.getAttribute("session") != null && errors.isEmpty()) {
         	result = "News posted.";
