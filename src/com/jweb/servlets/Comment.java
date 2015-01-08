@@ -12,7 +12,6 @@ import com.jweb.beans.CommentBean;
 import com.jweb.dao.CommentDao;
 import com.jweb.dao.DaoException;
 import com.jweb.dao.DaoFactory;
-import com.jweb.dao.UserDao;
 import com.jweb.forms.CommentForm;
 
 public class Comment extends HttpServlet {
@@ -30,9 +29,14 @@ public class Comment extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Collection<CommentBean> comments;
     	
-		comments = commentDao.findAll();
-		request.setAttribute(LIST, comments);
-    	this.getServletContext().getRequestDispatcher("/WEB-INF/comment.jsp").forward(request, response);		
+		try {
+			comments = commentDao.findAll();
+			request.setAttribute(LIST, comments);
+		}
+		catch (DaoException e) {
+			System.out.println(e.getMessage());
+		}
+		this.getServletContext().getRequestDispatcher("/WEB-INF/comment.jsp").forward(request, response);		
 	}
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -48,9 +52,14 @@ public class Comment extends HttpServlet {
     			form.setResult(e.getMessage());
     		}
     	}
-    	comments = commentDao.findAll();
-		request.setAttribute(LIST, comments);
-        request.setAttribute(FORM, form); 	
+    	try {
+    		comments = commentDao.findAll();
+    		request.setAttribute(LIST, comments);
+    	}
+    	catch (DaoException e) {
+    		System.out.println(e.getMessage());
+    	}
+		request.setAttribute(FORM, form); 	
 		
         this.getServletContext().getRequestDispatcher("/WEB-INF/comment.jsp").forward(request, response);
     }

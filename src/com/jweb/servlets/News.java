@@ -30,9 +30,14 @@ public class News extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	Collection<NewsBean> news;
     	
+    	try {
 		news = newsDao.findAll();
 		request.setAttribute(NEWS, news);
-    	this.getServletContext().getRequestDispatcher("/WEB-INF/news.jsp").forward(request, response);		
+    	}
+    	catch (DaoException e) {
+    		System.out.println(e.getMessage());
+    	}
+		this.getServletContext().getRequestDispatcher("/WEB-INF/news.jsp").forward(request, response);		
 	}
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -43,15 +48,22 @@ public class News extends HttpServlet {
     	if (form.getErrors().isEmpty()) {
     		try {
     			newsDao.create(news);
+    			
     		}
     		catch (DaoException e) {
     			form.setResult(e.getMessage());
     		}
     	}
-    	allNews = newsDao.findAll();
-        request.setAttribute(COMMENT, news);
+    	try {
+    		allNews = newsDao.findAll();
+    		request.setAttribute(NEWS, allNews);
+    	}
+    	catch (DaoException e) {
+    		form.setResult(e.getMessage());
+    	}
+    	request.setAttribute(COMMENT, news);
         request.setAttribute(FORM, form);
-        request.setAttribute(NEWS, allNews);
+       
         
         this.getServletContext().getRequestDispatcher("/WEB-INF/news.jsp").forward(request, response);
     }

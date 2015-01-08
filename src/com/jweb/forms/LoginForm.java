@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.jweb.beans.UserBean;
+import com.jweb.dao.DaoException;
 import com.jweb.dao.UserDao;
 
 public class LoginForm {
@@ -31,7 +32,7 @@ public class LoginForm {
     	return errors;
     }
     
-    public UserBean logInUser( HttpServletRequest request)
+    public UserBean logInUser( HttpServletRequest request) throws DaoException
     {
     	String email = request.getParameter(EMAIL_FIELD);
         String password = request.getParameter(PWD_FIELD);
@@ -42,28 +43,31 @@ public class LoginForm {
         } catch (Exception e) {
             errors.put( EMAIL_FIELD, e.getMessage() );
         }
-        user = userDao.find(email);
-        if (user == null) {
-        	errors.put( EMAIL_FIELD, "User not found");
-        	return user;
-        }
-        
         try {
-        	validatePassword(password);
-        } catch (Exception e) {
-            errors.put( PWD_FIELD, e.getMessage() );
-    	}
-        if (!user.getPassword().equals(password)) {
-        	errors.put(PWD_FIELD, "Wrong password");
+        	user = userDao.find(email);
+        	if (user == null) {
+            	errors.put( EMAIL_FIELD, "User not found");
+            	return user;
+            }
+        	try {
+             	validatePassword(password);
+            } catch (Exception e) {
+                 errors.put( PWD_FIELD, e.getMessage() );
+         	}
+            if (!user.getPassword().equals(password)) {
+             	errors.put(PWD_FIELD, "Wrong password");
+            }
+            if (errors.isEmpty()) {
+            	result = "User logged in.";
+            } else {
+            	result = "User not logged in";
+            }
+            return user;
         }
-        
-        if (errors.isEmpty()) {
-        	result = "User logged in.";
-        } else {
-        	result = "User not logged in";
+        catch (DaoException e) {
+        	result = "User not logged in, an error occured with the database";
+        	throw new DaoException(e);
         }
-        
-        return user;
     }
     
     /**
