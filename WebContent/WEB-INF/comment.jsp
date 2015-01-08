@@ -28,9 +28,9 @@
 	</form>
 	<c:forEach items="${list}" var="item">
 		<br/>
-		<h2><c:out value="${item.name}" /></h2>
+		<strong><c:out value="${item.user}" /></strong>
 		<p><c:out value="${item.date}" /></p>
-		<p><c:out value="${item.comment}" /></p>
+		<p><c:out value="${item.content}" /></p>
 		<br/>
 	</c:forEach>
 </body>

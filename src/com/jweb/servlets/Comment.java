@@ -38,6 +38,8 @@ public class Comment extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	CommentForm form = new CommentForm();
     	CommentBean comment = form.commentProduct(request);
+    	Collection<CommentBean> comments;
+    	
     	if (form.getErrors().isEmpty()) {
     		try {
     			commentDao.create(comment);
@@ -46,9 +48,10 @@ public class Comment extends HttpServlet {
     			form.setResult(e.getMessage());
     		}
     	}
-        request.setAttribute(COMMENT, comment);
-        request.setAttribute(FORM, form);
-        
+    	comments = commentDao.findAll();
+		request.setAttribute(LIST, comments);
+        request.setAttribute(FORM, form); 	
+		
         this.getServletContext().getRequestDispatcher("/WEB-INF/comment.jsp").forward(request, response);
     }
 }
