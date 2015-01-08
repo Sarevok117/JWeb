@@ -7,7 +7,7 @@
 <title>Sign up</title>
 </head>
 <body>
-	<a href="/Jwebb">Home Page</a><br />
+	<a href="/JWebb/">Home Page</a><br />
 	<form method="post" action="signup">
             <fieldset>
                 <legend>Sign up</legend>
